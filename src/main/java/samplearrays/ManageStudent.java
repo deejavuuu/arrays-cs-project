@@ -7,48 +7,104 @@ public class ManageStudent {
 
     // 2) Find the Oldest Student
     public static Student findOldest(Student[] students) {
-
+        Student oldest = students[0];
+        for(Student i: students){
+            if(i.getAge() > oldest.getAge()){
+                oldest = i;
+            }
+        }
         return oldest;
     }
 
     // 3) Count Adult Students (age >= 18)
     public static int countAdults(Student[] students) {
+        int adult = 0 ;
+        for(Student i: students){
+            if(i.getAge() >= 18 ){
+                adult += 1;
+            }
+        }
+        return adult;
 
     }
 
     // 4) Average Grade (returns NaN if no students or grades)
     public static double averageGrade(Student[] students) {
-
+        if (students.length == 0){return Double.NaN;}
+        double sum = 0;
+        for(Student i: students){
+            sum += i.getGrade();
+        }
+        return sum / students.length;
     }
 
     // 5) Search by Name (case-sensitive; change to equalsIgnoreCase if desired)
     public static Student findStudentByName(Student[] students, String name) {
-
+        for(Student i:students){
+            if(i.getName().equals(name)){
+                return i;
+            }
+        }
+        return null;
     }
 
     // 6) Sort Students by Grade (descending)
     public static void sortByGradeDesc(Student[] students) {
-
+        for(int i = 0; i< students.length;i++){
+            for(int j = 0; j< students.length;j++){
+                if(students[j].getAge() < students[i].getAge()){
+                    Student temp = students[j];
+                    students[j] = students[i];
+                    students[i] = temp;
+                }
+            }
+        }
     }
 
     // 7) Print High Achievers (grade >= 15)
     public static void printHighAchievers(Student[] students) {
-
+        for(Student i:students){
+            if(i.getGrade()>= 15){
+                System.out.println("Name: "+i.getName()+" Age: "+i.getAge()+"Id: "+i.getId()+" Grade: "+i.getGrade()+"\n");
+            }
+        }
     }
 
     // 8) Update Student Grade by id
     public static boolean updateGrade(Student[] students, int id, int newGrade) {
-
+        for(Student i:students){
+            if(i.getId()==id){
+                i.setGrade(newGrade);
+                return true;
+            }
+        }
+        return false;
     }
 
     // 9) Find Duplicate Names
     public static boolean hasDuplicateNames(Student[] students) {
+        for(int i = 0; i< students.length;i++){
+            for(int j = 0; j< students.length;j++){
+                if(students[j].getName().equals(students[i].getName())){
+                    System.out.println("Duplicate Name found: "+ students[i].getName());
+                    return true;
 
+                }
+            }
+        }
+        System.out.println("No Duplicate Name found. ");
+
+        return false;
     }
 
     // 10) Expandable Array: return a new array with one more slot and append student
     public static Student[] appendStudent(Student[] students, Student newStudent) {
-
+        Student[] updatedStudents = new Student[students.length+1];
+        for(int i = 0; i<students.length;i++){
+            updatedStudents[i] = students[i];
+        }
+        updatedStudents[students.length+1] = newStudent;
+        return  updatedStudents;
     }
 
     // 1) Create an Array of Students + demos for all tasks
