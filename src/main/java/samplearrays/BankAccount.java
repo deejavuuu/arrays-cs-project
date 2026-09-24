@@ -34,7 +34,7 @@ public class BankAccount {
             if(i>0){
                 System.out.println("Deposit : "+i+" DH");
             }
-            else{
+            else if(i<0){
                 System.out.println("Withdrawal : "+i+" DH");
             }
         }

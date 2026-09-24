@@ -8,7 +8,7 @@ public class CourseNumbersArray {
             if(registeredCourses[i] == newCourse){return registeredCourses;}
             updatedCourses[i] = registeredCourses[i];
         }
-        updatedCourses[registeredCourses.length + 1] = newCourse;
+        updatedCourses[registeredCourses.length] = newCourse;
         return updatedCourses;
     }
     public static void printCourses(int[] registeredCourses){
